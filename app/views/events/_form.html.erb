@@ -1,0 +1,63 @@
+<%= form_for @event do |f| %>
+  <div class="form-group">
+    <label>Event Name</label>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Event Description</label>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Location</label>
+    <%= f.text_field :location, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Price</label>
+    <%= f.number_field :price, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Capacity</label>
+    <%= f.number_field :capacity, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label>Will food be included?</label>
+    <%= f.check_box :includes_food %>
+  </div>
+
+  <div class="form-group">
+    <label>Will drinks be included?</label>
+    <%= f.check_box :includes_drinks %>
+  </div>
+
+  <div class="form-group">
+    <label>Start date and time:</label>
+    <%= f.datetime_select :starts_at %>
+  </div>
+
+  <div class="form-group">
+    <label>End date and time:</label>
+    <%= f.datetime_select :ends_at %>
+  </div>
+
+  <div class="form-group">
+    <label>Categories</label>
+    <%= f.collection_check_boxes(:category_ids, Category.all, :id, :name) do |b| %>
+      <%= b.check_box(class: "check_box") %> <%= b.object.name %>
+    <% end %>
+  </div>
+
+  <label>Publish this event?</label>
+
+  <div class="form-group">
+    <%= f.check_box :active %> Active
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

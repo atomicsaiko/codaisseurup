@@ -1,0 +1,36 @@
+<div class="panel panel-primary">
+  <div class="panel-heading"><%= @event.name %></div>
+
+  <div class="panel-body">
+
+    <p>Location <%= @event.location %></p>
+    <p>Host: <%= @event.user.email %></p>
+
+    <!-- Main Info -->
+    <h4>General Information</h4>
+
+    <p>Starting Time: <%= @event.starts_at %></p>
+    <p>Ending Time: <%= @event.ends_at %></p>
+    <p>Price: <%= @event.price == 0 ? "Free" : @event.price %> €</p>
+    <p>Capacity: <%= @event.capacity %> </p>
+    <!-- About -->
+    <h4>About</h4>
+    <p>Description: <%= @event.description %></p>
+
+    <!-- Additional Info-->
+    <h4>Additional Information</h4>
+    <ul>
+      <li><%= @event.includes_food ? "Snacks will be available" : "Please bring your own food" %></li>
+      <li><%= @event.includes_drinks ? "Drinks will be served!" : "Please bring your own drinks" %></li>
+    </ul>
+
+    <!-- Categories -->
+    <h4>Categories</h4>
+    <% @categories.each do |category| %>
+    <span class="label label-success"><%= category.name %></span>
+    <% end %>
+  </div>
+
+</div>
+
+<%= link_to "Back", events_path, class: "btn btn-default" %>
