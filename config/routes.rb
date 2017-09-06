@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :categories
   root to: 'pages#home'
   get 'pages/home'
+  get "about" => "pages#about" # Using 'to:' appearantly didn't work
 
   devise_for :users
   resources :users, only: [:show]
