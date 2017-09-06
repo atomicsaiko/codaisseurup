@@ -45,4 +45,38 @@ RSpec.describe Event, type: :model do
       expect(Event.order_by_price).to eq([least_expensive_event, expensive, most_expensive_event])
     end
   end
+
+  describe "association with user" do
+    let(:user) { create :user }
+
+    it "event belongs to a user" do
+      event = user.events.build(name: "Amsterdam Light Festival")
+
+      expect(event.user).to eq(user)
+    end
+
+    # OR, go the shoulda way:
+
+    it { is_expected.to belong_to :user}
+    # and an added bonus: test the themes association in one line as well:
+    it { is_expected.to have_and_belong_to_many :categories }
+  end
+
+  describe "association with categorie" do
+
+    start_at = DateTime.strptime('2001-02-03T10:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z')
+    end_at = DateTime.strptime('2001-02-03T17:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z')
+
+    let(:event) { create :event, starts_at: start_at, ends_at: end_at }
+
+    let(:categorie1) { create :category, name: "Food", events: [event] }
+    let(:categorie2) { create :category, name: "Games", events: [event] }
+    let(:categorie3) { create :category, name: "Travel", events: [event] }
+
+    it "has categories" do
+      expect(event.categories).to include(categorie1)
+      expect(event.categories).to include(categorie2)
+      expect(event.categories).to include(categorie3)
+    end
+  end
 end
