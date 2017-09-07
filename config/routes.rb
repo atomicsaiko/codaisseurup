@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "about" => "pages#about" # Using 'to:' appearantly didn't work
 
   devise_for :users
+  resources :photos, only: [:destroy]
   resources :users, only: [:show]
   resources :events, except: [:destroy]
   resources :profiles, only: [:new, :edit, :create, :update]

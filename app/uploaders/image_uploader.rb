@@ -49,4 +49,10 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   "something.jpg" if original_filename
   # end
 
+  version :thumbnail do
+    eager
+    resize_to_fit(150, 100)
+    cloudinary_transformation :quality => 98
+  end
+
 end
