@@ -23,7 +23,7 @@
         <%= current_user.has_profile? ? current_user.full_name : current_user.email  %> <span class="caret"></span></a>
 
         <ul class="dropdown-menu">
-          <li><%= link_to "Your Listings", events_path %></li>
+          <li><%= link_to "Your events", events_path %></li>
           <li role="separator" class="divider"></li>
 
           <% if current_user.has_profile? %>

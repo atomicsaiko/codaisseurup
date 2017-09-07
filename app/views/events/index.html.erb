@@ -1,14 +1,14 @@
 <div class="row">
   <div class="col-md-3">
     <ul class="sidebar-list">
-      <li class="sidebar-item"><%= link_to "Your Listings", events_path, class: "sidebar-link active" %></li>
+      <li class="sidebar-item"><%= link_to "Your Events", events_path, class: "sidebar-link active" %></li>
       <li class="sidebar-item"><%= link_to "Your Reservations", events_path, class: "sidebar-link" %></li>
     </ul>
   </div>
   <div class="col-md-9">
     <div class="panel panel-primary">
       <div class="panel-heading">
-        Your Listings
+        Your Events
       </div>
       <div class="panel-body">
 
@@ -16,6 +16,7 @@
         <div class="row">
           <div class="col-md-7">
             <h4><%= event.name %></h4>
+            <%= image_tag("pexels-photo-355988.jpeg", size: "150x100", alt: "Event thumb") %>
           </div>
           <div class="col-md-3 right">
             <%= link_to "View", event, class: "btn btn-default" %>
@@ -27,6 +28,6 @@
       </div>
     </div>
 
-    <%= link_to "Add new place", new_event_path, class: "btn btn-primary" %>
+    <%= link_to "Add new event", new_event_path, class: "btn btn-primary" %>
   </div>
 </div>
