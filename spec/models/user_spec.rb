@@ -22,4 +22,16 @@ RSpec.describe User, type: :model do
       expect { user.destroy }.to change(Event, :count).by(-1)
     end
   end
+
+  describe "association with registration" do
+    let(:guest_user) { create :user, email: "guest@user.com" }
+    let(:host_user) { create :user, email: "host@user.com" }
+
+    let!(:event) { create :event, starts_at: '2017-08-28 11:00:00', ends_at: '2017-08-28 17:00:00', user: host_user }
+    let!(:registration) { create :registration, event: event, user: guest_user }
+
+    it "has registrations" do
+      expect(guest_user.registered_events).to include(event)
+    end
+  end
 end

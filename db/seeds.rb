@@ -10,6 +10,7 @@ start_at = DateTime.strptime('2001-02-03T10:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z')
 end_at = DateTime.strptime('2001-02-03T17:05:06+07:00', '%Y-%m-%dT%H:%M:%S%z')
 
 Photo.destroy_all
+Registration.destroy_all
 Category.destroy_all
 Event.destroy_all
 Profile.destroy_all
@@ -37,3 +38,7 @@ photo3 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dgtx8b1vd/im
 photo4 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dgtx8b1vd/image/upload/v1504783695/pexels-photo-355988_siljb0.jpg", event: event2)
 photo5 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dgtx8b1vd/image/upload/v1504783695/pexels-photo-355988_siljb0.jpg", event: event2)
 photo6 = Photo.create!(remote_image_url: "http://res.cloudinary.com/dgtx8b1vd/image/upload/v1504783695/pexels-photo-355988_siljb0.jpg", event: event2)
+
+# Registrations
+Registration.create!(user: kevin, event: event1, status: true, price: 12.5, guests_count: 3.0)
+Registration.create!(user: jane, event: event2, status: true, price: 15.5, guests_count: 2.0)
